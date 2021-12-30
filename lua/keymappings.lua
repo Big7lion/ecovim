@@ -14,6 +14,10 @@ keymap("x", "J", ":move '>+1<CR>gv-gv", { noremap = true, silent = true })
 keymap("v", "<", "<gv", { noremap = true, silent = true })
 keymap("v", ">", ">gv", { noremap = true, silent = true })
 
+-- Translate
+keymap("n", "<S-t>", ":TranslateW<CR>", { noremap = true, silent = true })
+keymap("v", "<S-t>", ":TranslateW<CR>", { noremap = true, silent = true })
+
 -- Save file by CTRL-S
 keymap("n", "<C-s>", ":w<CR>", { noremap = true, silent = true })
 keymap("i", "<C-s>", "<ESC> :w<CR>", { noremap = true, silent = true })

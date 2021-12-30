@@ -119,6 +119,7 @@ local function init()
   use {'SirVer/ultisnips', requires = {"honza/vim-snippets"}, config = "require('plugins.ultisnips')", after = 'cmp-nvim-ultisnips'}
   use {'lpinilla/vim-codepainter'}
   use {'voldikss/vim-translator'}
+  use {'prettier/vim-prettier'}
 
   -- Nvim Tree
   use {'kyazdani42/nvim-tree.lua', config = "require('plugins.tree')"}
