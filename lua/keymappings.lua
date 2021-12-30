@@ -1,10 +1,25 @@
 local keymap = vim.api.nvim_set_keymap;
 
 -- Better window movement
-keymap("n", "<C-h>", "<C-w>h", { silent = true })
-keymap("n", "<C-j>", "<C-w>j", { silent = true })
-keymap("n", "<C-k>", "<C-w>k", { silent = true })
-keymap("n", "<C-l>", "<C-w>l", { silent = true })
+keymap("n", "<A-h>", "<C-w>h", { silent = true })
+keymap("n", "<A-j>", "<C-w>j", { silent = true })
+keymap("n", "<A-k>", "<C-w>k", { silent = true })
+keymap("n", "<A-l>", "<C-w>l", { silent = true })
+
+-- Better cursor movement
+keymap("n", "<C-h>", "<Left>", { silent = true })
+keymap("n", "<C-j>", "<Down>", { silent = true })
+keymap("n", "<C-k>", "<Up>", { silent = true })
+keymap("n", "<C-l>", "<Right>", { silent = true })
+keymap("v", "<C-h>", "<Left>", { silent = true })
+keymap("v", "<C-j>", "<Down>", { silent = true })
+keymap("v", "<C-k>", "<Up>", { silent = true })
+keymap("v", "<C-l>", "<Right>", { silent = true })
+keymap("i", "<C-h>", "<Left>", { silent = true })
+keymap("i", "<C-j>", "<Down>", { silent = true })
+keymap("i", "<C-k>", "<Up>", { silent = true })
+keymap("i", "<C-l>", "<Right>", { silent = true })
+
 
 -- Move selected line / block of text in visual mode
 keymap("x", "K", ":move '<-2<CR>gv-gv", { noremap = true, silent = true })
@@ -16,7 +31,7 @@ keymap("v", ">", ">gv", { noremap = true, silent = true })
 
 -- Translate
 keymap("n", "<S-t>", ":TranslateW<CR>", { noremap = true, silent = true })
-keymap("v", "<S-t>", ":TranslateW<CR>", { noremap = true, silent = true })
+keymap("v", "<S-t>", ":TranslateWV<CR>", { noremap = true, silent = true })
 
 -- Save file by CTRL-S
 keymap("n", "<C-s>", ":w<CR>", { noremap = true, silent = true })
@@ -47,7 +62,7 @@ keymap("n", "gn", ":bn<CR>", { noremap = true, silent = true })
 keymap("n", "<S-Tab>", ":BufferPrevious<CR>", { noremap = true, silent = true })
 keymap("n", "gp", ":bp<CR>", { noremap = true, silent = true })
 keymap("n", "<S-q>", ":BufferClose<CR>", { noremap = true, silent = true })
-
+--keymap("n", "<C-w>", ":BufferClose<CR>", { noremap = true, silent = true })
 -- Move between barbar buffers
 keymap("n", "<Space>1", ":BufferGoto 1<CR>", { silent = true })
 keymap("n", "<Space>2", ":BufferGoto 2<CR>", { silent = true })
