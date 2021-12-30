@@ -20,26 +20,17 @@ keymap("i", "<C-j>", "<Down>", { silent = true })
 keymap("i", "<C-k>", "<Up>", { silent = true })
 keymap("i", "<C-l>", "<Right>", { silent = true })
 
-
--- Move selected line / block of text in visual mode
-keymap("x", "K", ":move '<-2<CR>gv-gv", { noremap = true, silent = true })
-keymap("x", "J", ":move '>+1<CR>gv-gv", { noremap = true, silent = true })
-
 -- Keep visual mode indenting
 keymap("v", "<", "<gv", { noremap = true, silent = true })
 keymap("v", ">", ">gv", { noremap = true, silent = true })
 
 -- Translate
 keymap("n", "<S-t>", ":TranslateW<CR>", { noremap = true, silent = true })
-keymap("v", "<S-t>", ":TranslateWV<CR>", { noremap = true, silent = true })
+keymap("v", "<S-t>", ":TranslateW<CR>", { noremap = true, silent = true })
 
 -- Save file by CTRL-S
 keymap("n", "<C-s>", ":w<CR>", { noremap = true, silent = true })
 keymap("i", "<C-s>", "<ESC> :w<CR>", { noremap = true, silent = true })
-
--- Make word uppercase
-keymap("n", "<C-u>", "viwU<ESC>", { noremap = true })
-keymap("i", "<C-u>", "<ESC>viwUi", { noremap = true })
 
 -- Telescope
 keymap("n", "<C-p>", "<CMD>lua require('plugins.telescope').project_files()<CR>", { noremap = true })
@@ -62,17 +53,7 @@ keymap("n", "gn", ":bn<CR>", { noremap = true, silent = true })
 keymap("n", "<S-Tab>", ":BufferPrevious<CR>", { noremap = true, silent = true })
 keymap("n", "gp", ":bp<CR>", { noremap = true, silent = true })
 keymap("n", "<S-q>", ":BufferClose<CR>", { noremap = true, silent = true })
---keymap("n", "<C-w>", ":BufferClose<CR>", { noremap = true, silent = true })
 -- Move between barbar buffers
-keymap("n", "<Space>1", ":BufferGoto 1<CR>", { silent = true })
-keymap("n", "<Space>2", ":BufferGoto 2<CR>", { silent = true })
-keymap("n", "<Space>3", ":BufferGoto 3<CR>", { silent = true })
-keymap("n", "<Space>4", ":BufferGoto 4<CR>", { silent = true })
-keymap("n", "<Space>5", ":BufferGoto 5<CR>", { silent = true })
-keymap("n", "<Space>6", ":BufferGoto 6<CR>", { silent = true })
-keymap("n", "<Space>7", ":BufferGoto 7<CR>", { silent = true })
-keymap("n", "<Space>8", ":BufferGoto 8<CR>", { silent = true })
-keymap("n", "<Space>9", ":BufferGoto 9<CR>", { silent = true })
 keymap("n", "<A-1>", ":BufferGoto 1<CR>", { silent = true })
 keymap("n", "<A-2>", ":BufferGoto 2<CR>", { silent = true })
 keymap("n", "<A-3>", ":BufferGoto 3<CR>", { silent = true })
@@ -101,19 +82,19 @@ keymap("n", "<Space>.", ":cn<CR>", { silent = true })
 keymap("n", "<Space>cc", ":cclose<CR>", { silent = true })
 
 -- Easyalign
-keymap("n", "ga", "<Plug>(EasyAlign)", { silent = true })
-keymap("x", "ga", "<Plug>(EasyAlign)", { silent = true })
+-- keymap("n", "ga", "<Plug>(EasyAlign)", { silent = true })
+-- keymap("x", "ga", "<Plug>(EasyAlign)", { silent = true })
 
 -- Manually invoke speeddating in case switch.vim didn't work
-keymap("n", "<C-a>", ":if !switch#Switch() <bar> call speeddating#increment(v:count1) <bar> endif<CR>", { noremap = true, silent = true })
-keymap("n", "<C-x>", ":if !switch#Switch({'reverse': 1}) <bar> call speeddating#increment(-v:count1) <bar> endif<CR>", { noremap = true, silent = true })
+keymap("n", "<C-a>", ":if !switch#Switch() <bar> call speeddating#increment(v:count2) <bar> endif<CR>", { noremap = true, silent = true }) 
+keymap("n", "<C-x>", ":if !switch#Switch({'reverse': 0}) <bar> call speeddating#increment(-v:count1) <bar> endif<CR>", { noremap = true, silent = true })
 
 -- Space to NOP to prevent Leader issues
-keymap("n", "<Space>", "<NOP>", { noremap = true, silent = true })
+keymap("n", "<Space>", "<NOP>", { noremap                                                  = true, silent = true })
 
 -- Open links under cursor in browser with gx
-if vim.fn.has('macunix') == 1 then
-  keymap("n", "gx", "<cmd>silent execute '!open ' . shellescape('<cWORD>')<CR>", { silent = true })
+if vim.fn.has('macunix')                                                                  == 1 then
+  keymap("n", "gx", "<cmd>silent execute '!open ' . shellescape('<cWORD>')<CR>", { silent  = true })
 else
   keymap("n", "gx", "<cmd>silent execute '!xdg-open ' . shellescape('<cWORD>')<CR>", { silent = true })
 end
@@ -124,7 +105,6 @@ keymap("n", "<F4>", "<cmd>lua require('functions').erase_painter_line()<CR>", { 
 -- LSP
 keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
 keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", { noremap = true, silent = true })
-keymap("n", "<C-Space>", "<cmd>lua vim.lsp.buf.code_action()<CR>", { silent = true })
 keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
 keymap("v", "<leader>ca", "<cmd>'<,'>lua vim.lsp.buf.range_code_action()<CR>", { noremap = true, silent = true })
 keymap("n", "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
