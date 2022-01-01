@@ -23,6 +23,11 @@ M.erase_painter_line = function()
   require('notify')("Erased line", "info", { title = "Painter", timeout = 1000 })
 end
 
+M.painter_selection_color = function ()
+  vim.fn['codepainter#paintText']('')
+  require('notify')("paintText", "info", { title = "Painter", timeout = 1000 })
+end
+
 M.first_ecovim_run = function()
   local is_first_run = utils.file_exists('/tmp/first-ecovim-run')
 

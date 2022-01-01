@@ -82,7 +82,7 @@ local function init()
   use {'folke/lsp-trouble.nvim', config = "require('plugins.trouble')"}
   use {'nvim-lua/popup.nvim'}
   use {'SmiteshP/nvim-gps', config = "require('plugins.gps')", after = 'nvim-treesitter'}
-  use {'jose-elias-alvarez/nvim-lsp-ts-utils', after = {'nvim-treesitter'}}
+  use {'jose-elias-alvarez/nvim-lsp-ts-utils'}
 
   -- General
   use {'ellisonleao/glow.nvim', config = function() vim.g.glow_border = "rounded" end}
@@ -91,17 +91,10 @@ local function init()
   use {'numToStr/Comment.nvim', config = "require('plugins.comment')"}
   use {'akinsho/nvim-toggleterm.lua', config = "require('plugins.toggleterm')"}
   use {'tpope/vim-repeat'}
-  use {'tpope/vim-speeddating'}
-  use {'tpope/vim-surround'}
-  use {'dhruvasagar/vim-table-mode'}
   use {'mg979/vim-visual-multi'}
-  use {'junegunn/vim-easy-align'}
   use {'JoosepAlviste/nvim-ts-context-commentstring', after = 'nvim-treesitter'}
   use {'nacro90/numb.nvim', config = "require('plugins.numb')"}
   use {'folke/todo-comments.nvim'}
-  use {'folke/zen-mode.nvim', config = "require('plugins.zen')", disable = not EcoVim.plugins.zen.enabled}
-  use {'folke/twilight.nvim', config = function() require("twilight").setup {} end, disable = not EcoVim.plugins.zen.enabled}
-  use {'ggandor/lightspeed.nvim'}
   use {'folke/which-key.nvim', config = "require('plugins.which-key')", event = "BufWinEnter"}
   use {'ecosse3/galaxyline.nvim', after = 'nvim-gps', config = "require('plugins.galaxyline')"}
   use {'romgrk/barbar.nvim', config = "require('plugins.barbar')"}

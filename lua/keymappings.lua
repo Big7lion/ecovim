@@ -79,6 +79,8 @@ keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", { noremap = true, silent = 
 -- keymap("n", "[g", "<cmd>lua vim.diagnostic.goto_next({ float = { border = 'rounded' }})<CR>", { noremap = true, silent = true })
 -- keymap("n", "]g", "<cmd>lua vim.diagnostic.goto_prev({ float = { border = 'rounded' }})<CR>", { noremap = true, silent = true })
 
--- Erase painter line
-keymap("n", "<leader>hr", "<cmd>lua require('functions').erase_painter_line()<CR>", { noremap = true, silent = true })
-keymap("n", "<leader>hc", "<cmd>lua require('functions').erase_painter_line()<CR>", { noremap = true, silent = true })
+-- painter lines
+keymap("n", "<leader>hr", "<CMD>lua require('functions').erase_painter_line()<CR>", { noremap = true, silent = true })
+keymap("n", "<leader>hc", "<CMD>lua vim.fn['codepainter#EraseAll']()<CR>", { noremap = true, silent = true })
+keymap("v", "<leader>hp", "<CMD>'<,'>lua vim.fn['codepainter#paintText']('')<CR>", { noremap = true })
+keymap("n", "<leader>hn", "<CMD>lua vim.fn['codepainter#navigate']()<CR>", { noremap = true, silent = true })
