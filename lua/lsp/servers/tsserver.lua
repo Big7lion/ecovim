@@ -28,6 +28,7 @@ require'lspconfig'.tsserver.setup({
   handlers = handlers,
   capabilities = capabilities,
   on_attach = function(client, bufnr)
+    print('Starting' .. vim.inspect(client))
     client.resolved_capabilities.document_formatting = false
     client.resolved_capabilities.document_range_formatting = false
 

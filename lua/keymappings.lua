@@ -59,8 +59,6 @@ keymap("v", "x", '"_x', { noremap = true, silent = true })
 keymap("v", "X", '"_X', { noremap = true, silent = true })
 
 -- Quickfix
-keymap("n", "<Space>.", ":cn<CR>", { silent = true })
-keymap("n", "<Space>cc", ":cclose<CR>", { silent = true })
 
 -- Space to NOP to prevent Leader issues
 keymap("n", "<Space>", "<NOP>", { noremap = true, silent = true })
@@ -70,17 +68,11 @@ keymap("n", "<F2>", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, s
 keymap("v", "<F2>", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
 keymap("n", "<F3>", "<cmd>lua vim.lsp.buf.references()<CR>", { noremap = true, silent = true })
 keymap("v", "<F3>", "<cmd>lua vim.lsp.buf.references()<CR>", { noremap = true, silent = true })
-keymap("n", "<C-.>", "<cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
-keymap("v", "<C-.>", "<cmd>'<,'>lua vim.lsp.buf.range_code_action()<CR>", { noremap = true, silent = true })
+keymap("n", "<A-q>", "<cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
+keymap("v", "<A-q>", "<cmd>'<,'>lua vim.lsp.buf.range_code_action()<CR>", { noremap = true, silent = true })
 keymap("n", "<F4>", "<cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
 keymap("n", "<A-f>", "<cmd>lua vim.lsp.buf.formatting()<CR>", { noremap = true, silent = true })
 keymap("v", "<A-f>", "<cmd>'<.'>lua vim.lsp.buf.range_formatting()<CR>", { noremap = true, silent = true })
 keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", { noremap = true, silent = true })
 -- keymap("n", "[g", "<cmd>lua vim.diagnostic.goto_next({ float = { border = 'rounded' }})<CR>", { noremap = true, silent = true })
 -- keymap("n", "]g", "<cmd>lua vim.diagnostic.goto_prev({ float = { border = 'rounded' }})<CR>", { noremap = true, silent = true })
-
--- painter lines
-keymap("n", "<leader>hr", "<CMD>lua require('functions').erase_painter_line()<CR>", { noremap = true, silent = true })
-keymap("n", "<leader>hc", "<CMD>lua vim.fn['codepainter#EraseAll']()<CR>", { noremap = true, silent = true })
-keymap("v", "<leader>hp", "<CMD>'<,'>lua vim.fn['codepainter#paintText']('')<CR>", { noremap = true })
-keymap("n", "<leader>hn", "<CMD>lua vim.fn['codepainter#navigate']()<CR>", { noremap = true, silent = true })
