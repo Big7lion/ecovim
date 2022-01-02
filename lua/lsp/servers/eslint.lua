@@ -14,7 +14,7 @@ end
 -- Settings
 
 M.settings = {
-  format = { enable = true }
+  format = { enable = false }
 }
 
 return M
