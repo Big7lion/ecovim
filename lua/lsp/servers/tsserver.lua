@@ -1,43 +1,45 @@
-local handlers =  {
-  ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = EcoVim.ui.float.border}),
-  ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = EcoVim.ui.float.border}),
-}
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-local status_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
-if status_ok then
-  capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
-end
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.preselectSupport = true
-capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
-capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
-capabilities.textDocument.completion.completionItem.deprecatedSupport = true
-capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
-capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-  properties = {
-    'documentation',
-    'detail',
-    'additionalTextEdits',
-  }
-}
+-- local handlers =  {
+--   ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = EcoVim.ui.float.border}),
+--   ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = EcoVim.ui.float.border}),
+-- }
+--
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- local status_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+-- if status_ok then
+--   capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- end
+-- capabilities.textDocument.completion.completionItem.snippetSupport = true
+-- capabilities.textDocument.completion.completionItem.preselectSupport = true
+-- capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+-- capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+-- capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+-- capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
+-- capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
+-- capabilities.textDocument.completion.completionItem.resolveSupport = {
+--   properties = {
+--     'documentation',
+--     'detail',
+--     'additionalTextEdits',
+--   }
+-- }
 
 -- npm install -g typescript typescript-language-server
 require'lspconfig'.tsserver.setup({
-  handlers = handlers,
-  capabilities = capabilities,
+  -- handlers = handlers,
+  -- capabilities = capabilities,
+  init_options = require('nvim-lsp-ts-utils').init_options,
+
   on_attach = function(client, bufnr)
-    print('Starting' .. vim.inspect(client))
     client.resolved_capabilities.document_formatting = false
     client.resolved_capabilities.document_range_formatting = false
 
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
     buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
-    require("nvim-lsp-ts-utils").setup {
-        debug = false,
-        disable_commands = false,
+    local ts_utils = require('nvim-lsp-ts-utils')
+
+    ts_utils.setup {
+        debug = true,
         enable_import_on_completion = true,
         import_all_timeout = 5000, -- ms
 
@@ -73,6 +75,6 @@ require'lspconfig'.tsserver.setup({
         filter_out_diagnostics_by_code = {},
     }
 
-    require("nvim-lsp-ts-utils").setup_client(client)
+    ts_utils.setup_client(client)
   end
 })

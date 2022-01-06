@@ -27,6 +27,7 @@ keymap("v", ">", ">gv", { noremap = true, silent = true })
 -- Better word select
 keymap("n", "<C-d>", "viw", { noremap = true, silent = true })
 keymap("v", "<C-d>", "<ESC>viw", { noremap = true, silent = true })
+keymap("i", "<C-d>", "<ESC>viw", { noremap = true, silent = true })
 
 -- Translate
 keymap("n", "<S-t>", ":TranslateW<CR>", { noremap = true, silent = true })
@@ -76,3 +77,6 @@ keymap("v", "<A-f>", "<CMD>'<.'>lua vim.lsp.buf.range_formatting()<CR>", { norem
 keymap("n", "K", "<CMD>lua vim.lsp.buf.hover()<CR>", { noremap = true, silent = true })
 -- keymap("n", "[g", "<cmd>lua vim.diagnostic.goto_next({ float = { border = 'rounded' }})<CR>", { noremap = true, silent = true })
 -- keymap("n", "]g", "<cmd>lua vim.diagnostic.goto_prev({ float = { border = 'rounded' }})<CR>", { noremap = true, silent = true })
+
+-- Markdown preview
+keymap('n', "<leader>mp", "<CMD>:Glow<CR>", { noremap = true, silent = true })

@@ -48,6 +48,7 @@ local globals = {
   fillchars                   = "fold:\\ ", --- Fill chars needed for folds
   mapleader                   = ' ',        --- Map leader key to SPC
   speeddating_no_mappings     = 1,          --- Disable default mappings for speeddating
+  do_filetype_lua             = 1,
 }
 
 vim.opt.shortmess:append('c');

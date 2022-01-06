@@ -71,7 +71,6 @@ local function init()
   use {'hrsh7th/cmp-buffer', after = 'cmp-nvim-lsp'}
   use {'hrsh7th/cmp-path', after = 'cmp-buffer'}
   use {'hrsh7th/cmp-calc', after = 'cmp-path'}
-  -- use {'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp', after = 'cmp-calc'}
   use {'David-Kunz/cmp-npm', after = 'cmp-calc', requires = 'nvim-lua/plenary.nvim', config = "require('plugins.cmp-npm')"}
   use {'quangnguyen30192/cmp-nvim-ultisnips', after = 'cmp-npm'}
 
@@ -100,8 +99,8 @@ local function init()
   use {'romgrk/barbar.nvim', config = "require('plugins.barbar')"}
   use {'antoinemadec/FixCursorHold.nvim'} -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
   use {'rcarriga/nvim-notify'}
+  use {'tjdevries/vlog.nvim'}
   use {'vuki656/package-info.nvim', disable = not EcoVim.plugins.package_info.enabled}
-
   -- Snippets & Language & Syntax
   use {'windwp/nvim-autopairs', after = {'nvim-treesitter', 'nvim-cmp'}, config = "require('plugins.autopairs')"}
   use {'p00f/nvim-ts-rainbow', after = {'nvim-treesitter'}}
