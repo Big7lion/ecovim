@@ -269,7 +269,6 @@ table.insert(gls.left, {
     DiffAdd = {
         provider = 'DiffAdd',
         condition = condition.check_git_workspace,
-        -- icon = '  ',
         icon = '  ',
         highlight = {colors.green, colors.gitbg}
     }
@@ -278,7 +277,6 @@ table.insert(gls.left, {
     DiffModified = {
         provider = 'DiffModified',
         condition = condition.check_git_workspace,
-        -- icon = '  ',
         icon = ' 柳',
         highlight = {colors.blue, colors.gitbg}
     }
@@ -287,7 +285,6 @@ table.insert(gls.left, {
     DiffRemove = {
         provider = 'DiffRemove',
         condition = condition.check_git_workspace,
-        -- icon = '  ',
         icon = '  ',
         highlight = {colors.red, colors.gitbg}
     }
@@ -494,29 +491,10 @@ table.insert(gls.right, {
 table.insert(gls.right, {
     StatsSectionStart = {
         provider = function() return leftbracket end,
-        highlight = {colors.statsicon, colors.bg}
+        highlight = {colors.statsbg, colors.bg}
     }
 })
-table.insert(gls.right, {
-    StatsIcon = {
-        provider = function()
-            return '⅑'
-        end,
-        highlight = {colors.statsbg, colors.statsicon}
-    }
-})
-table.insert(gls.right, {
-    StatsMid = {
-        provider = function() return rightbracket .. ' ' end,
-        highlight = {colors.statsicon, colors.statsbg}
-    }
-})
-table.insert(gls.right, {
-    PerCent = {
-        provider = 'LinePercent',
-        highlight = {colors.statstext, colors.statsbg}
-    }
-})
+
 table.insert(gls.right, {
     VerticalPosAndSize = {
         provider = function()
@@ -527,6 +505,7 @@ table.insert(gls.right, {
         highlight = {colors.statstext, colors.statsbg}
     }
 })
+
 table.insert(gls.right, {
     CursorColumnStart = {
         provider = function()
@@ -568,34 +547,6 @@ table.insert(gls.right, {
             return " " .. rightbracket
         end,
         highlight = 'LinePosHighlightEnd'
-    }
-})
-table.insert(gls.right, {
-    TabOrSpace = {
-        provider = function()
-            if vim.bo.expandtab
-            then
-                return '⯀'
-            else
-                return '⯈'
-            end
-        end,
-        condition = condition.hide_in_width,
-        highlight = {colors.statsicon, colors.statsbg}
-    }
-})
-table.insert(gls.right, {
-    Tabstop = {
-        provider = function()
-            if vim.bo.expandtab
-            then
-                return vim.bo.shiftwidth
-            else
-                return vim.bo.shiftwidth
-            end
-        end,
-        condition = condition.hide_in_width,
-        highlight = {colors.statstext, colors.statsbg}
     }
 })
 table.insert(gls.right, {

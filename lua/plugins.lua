@@ -33,7 +33,7 @@ local function init()
 
   -- Needed to load first
   use {'lewis6991/impatient.nvim', rocks = 'mpack'}
-  use {'nathom/filetype.nvim'}
+  use {'nathom/filetype.nvim', config = "require('plugins.filetype')"}
   use {'nvim-lua/plenary.nvim'}
   use {'kyazdani42/nvim-web-devicons'}
   use {'glepnir/dashboard-nvim', config = "require('plugins.dashboard')"}
@@ -71,8 +71,7 @@ local function init()
   use {'hrsh7th/cmp-buffer', after = 'cmp-nvim-lsp'}
   use {'hrsh7th/cmp-path', after = 'cmp-buffer'}
   use {'hrsh7th/cmp-calc', after = 'cmp-path'}
-  use {'David-Kunz/cmp-npm', after = 'cmp-calc', requires = 'nvim-lua/plenary.nvim', config = "require('plugins.cmp-npm')"}
-  use {'quangnguyen30192/cmp-nvim-ultisnips', after = 'cmp-npm'}
+  use {'quangnguyen30192/cmp-nvim-ultisnips', after = 'cmp-calc'}
 
   -- LSP Addons
   use {'williamboman/nvim-lsp-installer', event = 'BufEnter', after = 'cmp-nvim-lsp', config = "require('lsp.installer')"}
@@ -105,7 +104,6 @@ local function init()
   use {'windwp/nvim-autopairs', after = {'nvim-treesitter', 'nvim-cmp'}, config = "require('plugins.autopairs')"}
   use {'p00f/nvim-ts-rainbow', after = {'nvim-treesitter'}}
   use {'mattn/emmet-vim'}
-  use {'potatoesmaster/i3-vim-syntax'}
   use {'lukas-reineke/indent-blankline.nvim', config = "require('plugins.indent')"}
   use {'norcalli/nvim-colorizer.lua', config = "require('plugins.colorizer')"}
   use {'SirVer/ultisnips', requires = {"honza/vim-snippets"}, config = "require('plugins.ultisnips')", after = 'cmp-nvim-ultisnips'}

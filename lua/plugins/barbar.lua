@@ -1,16 +1,16 @@
 -- Set barbar's options
 vim.g.bufferline = {
   -- Enable/disable animations
-  animation = true,
+  animation = false,
 
   -- Enable/disable auto-hiding the tab bar when there is a single buffer
-  auto_hide = false,
+  auto_hide = true,
 
   -- Enable/disable current/total tabpages indicator (top right corner)
   tabpages = true,
 
   -- Enable/disable close button
-  closable = false,
+  closable = true,
 
   -- Enables/disable clickable tabs
   --  - left-click: go to buffer
@@ -30,7 +30,7 @@ vim.g.bufferline = {
   -- highlight group. By default, the Buffer*Icon group is linked to the
   -- Buffer* group (see Highlighting below). Otherwise, it will take its
   -- default value as defined by devicons.
-  icon_custom_colors = false,
+  icon_custom_colors = true,
 
   -- Configure icons on the bufferline.
   icon_separator_active = '▎',
@@ -47,7 +47,7 @@ vim.g.bufferline = {
   maximum_padding = 2,
 
   -- Sets the maximum buffer name length.
-  maximum_length = 30,
+  maximum_length = 20,
 
   -- If set, the letters for each buffer in buffer-pick mode will be
   -- assigned based on their name. Otherwise or in case all letters are
@@ -62,5 +62,5 @@ vim.g.bufferline = {
 
   -- Sets the name of unnamed buffers. By default format is "[Buffer X]"
   -- where X is the buffer number. But only a static string is accepted here.
-  no_name_title = nil,
+  no_name_title = "Empty",
 }

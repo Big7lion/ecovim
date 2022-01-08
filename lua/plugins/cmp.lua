@@ -38,26 +38,11 @@ cmp.setup {
 
   -- You must set mapping if you want.
   mapping = {
-    ['<C-k>'] = cmp.mapping.select_prev_item(),
-    ['<C-j>'] = cmp.mapping.select_next_item(),
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    -- ['<Tab>'] = function(fallback)
-    --   if vim.fn.complete_info()["selected"] == -1 and vim.fn["UltiSnips#CanExpandSnippet"]() == 1 then
-    --     press("<C-R>=UltiSnips#ExpandSnippet()<CR>")
-    --   elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
-    --     press("<ESC>:call UltiSnips#JumpForwards()<CR>")
-    --   elseif cmp.visible() then
-    --     cmp.select_next_item()
-    --   elseif has_any_words_before() then
-    --     press("<Tab>")
-    --   else
-    --     fallback()
-    --   end
-    -- end,
     ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
     ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' }),
   },
@@ -84,9 +69,7 @@ cmp.setup {
   -- You should specify your *installed* sources.
   sources = {
     { name = 'nvim_lsp'                        },
-    { name = 'npm'                             },
     { name = 'ultisnips'                       },
-    -- { name = 'cmp_tabnine', max_item_count = 3 },
     { name = 'buffer', keyword_length = 5      },
     { name = 'path'                            },
     { name = 'calc'                            },
@@ -99,9 +82,3 @@ cmp.setup {
   }
 }
 
--- tabnine:setup({
---         max_lines                = 1000;
---         max_num_results          = 3;
---         sort                     = true;
---         show_prediction_strength = true;
--- })

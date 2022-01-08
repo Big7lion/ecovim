@@ -14,7 +14,7 @@ require'nvim-tree'.setup {
   -- opens the tree when changing/opening a new tab if the tree wasn't previously opened
   open_on_tab         = false,
   -- hijack the cursor in the tree to put it at the start of the filename
-  hijack_cursor       = false,
+  hijack_cursor       = true,
   -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually)
   update_cwd          = true,
   -- show lsp diagnostics in the signcolumn
@@ -41,7 +41,7 @@ require'nvim-tree'.setup {
   -- configuration options for the system open command (`s` in the tree by default)
   system_open = {
     -- the command to run this, leaving nil should work in most cases
-    cmd  = "explorer.exe",
+    cmd  = "code",
     -- the command arguments as a list
     args = {}
   },
@@ -56,7 +56,7 @@ require'nvim-tree'.setup {
   },
   view = {
     -- width of the window, can be either a number (columns) or a string in `%`
-    width = 30,
+    width = 35,
     hide_root_folder = false,
     -- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
     side = 'left',

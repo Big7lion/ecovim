@@ -184,9 +184,11 @@ local mappings = {
   },
 
   t = {
-    name = "Table Mode",
-    m = { 'toggle' },
-    t = { 'tableize' },
+    name = "Nvim treesitter",
+    d = { 'init selection' },
+    i = { 'node selection increment' },
+    u = { 'node selection decrement' },
+    s = { 'scope selection increment' }
   },
 }
 

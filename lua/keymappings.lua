@@ -25,9 +25,15 @@ keymap("v", "<", "<gv", { noremap = true, silent = true })
 keymap("v", ">", ">gv", { noremap = true, silent = true })
 
 -- Better word select
-keymap("n", "<C-d>", "viw", { noremap = true, silent = true })
-keymap("v", "<C-d>", "<ESC>viw", { noremap = true, silent = true })
-keymap("i", "<C-d>", "<ESC>viw", { noremap = true, silent = true })
+keymap("n", "<C-d>", "<leader>td", { silent = true })
+keymap("v", "<C-d>", "<leader>td", { silent = true })
+keymap("v", "<C-i>", "<leader>ti", { silent = true })
+keymap("v", "<C-u>", "<leader>tu", { silent = true })
+keymap("i", "<C-d>", "<ESC><leader>td", { silent = true })
+
+-- keep the undo and redo in edit mode
+keymap("i", "<C-z>", "<ESC>ui", {noremap = true, silent = true})
+keymap("i", "<C-r>", "<ESC><C-r>ea", {noremap = true, silent = true})
 
 -- Translate
 keymap("n", "<S-t>", ":TranslateW<CR>", { noremap = true, silent = true })
@@ -52,12 +58,14 @@ keymap("n", "<Leader>glc", "<CMD>lua require('plugins.telescope').my_git_bcommit
 keymap("n", "<Tab>", ":BufferNext<CR>", { noremap = true, silent = true })
 keymap("n", "<S-Tab>", ":BufferPrevious<CR>", { noremap = true, silent = true })
 keymap("n", "<S-q>", ":BufferClose<CR>", { noremap = true, silent = true })
+keymap("n", "<C-x>", ":BufferClose<CR>", { noremap = true, silent = true })
 
 -- Don't yank on delete char
 keymap("n", "x", '"_x', { noremap = true, silent = true })
 keymap("n", "X", '"_X', { noremap = true, silent = true })
 keymap("v", "x", '"_x', { noremap = true, silent = true })
 keymap("v", "X", '"_X', { noremap = true, silent = true })
+keymap("v", "c", '"_c', { noremap = true, silent = true })
 
 -- Quickfix
 
