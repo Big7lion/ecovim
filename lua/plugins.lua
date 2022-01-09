@@ -70,8 +70,7 @@ local function init()
   use {'hrsh7th/cmp-nvim-lsp', after = 'cmp-nvim-lua'}
   use {'hrsh7th/cmp-buffer', after = 'cmp-nvim-lsp'}
   use {'hrsh7th/cmp-path', after = 'cmp-buffer'}
-  use {'hrsh7th/cmp-calc', after = 'cmp-path'}
-  use {'quangnguyen30192/cmp-nvim-ultisnips', after = 'cmp-calc'}
+  use {'quangnguyen30192/cmp-nvim-ultisnips', after = 'cmp-path'}
 
   -- LSP Addons
   use {'williamboman/nvim-lsp-installer', event = 'BufEnter', after = 'cmp-nvim-lsp', config = "require('lsp.installer')"}

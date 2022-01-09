@@ -2,7 +2,6 @@
 local cmp = require('cmp')
 
 local lspkind = require('lspkind')
--- local tabnine = require('cmp_tabnine.config')
 
 local has_any_words_before = function()
   if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
@@ -18,9 +17,6 @@ end
 
 local source_mapping = {
   buffer      = EcoVim.icons.buffer .. '[BUF]',
-  calc        = EcoVim.icons.calculator,
-  -- cmp_tabnine = EcoVim.icons.light,
-  npm         = EcoVim.icons.terminal .. '[NPM]',
   nvim_lsp    = EcoVim.icons.paragraph .. '[LSP]',
   nvim_lua    = EcoVim.icons.bomb,
   path        = EcoVim.icons.folderOpen2,
@@ -70,9 +66,8 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp'                        },
     { name = 'ultisnips'                       },
-    { name = 'buffer', keyword_length = 5      },
+    { name = 'buffer', keyword_length = 4      },
     { name = 'path'                            },
-    { name = 'calc'                            },
     { name = 'nvim_lua'                        },
   },
 
