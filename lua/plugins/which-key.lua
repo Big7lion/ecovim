@@ -57,7 +57,7 @@ require'which-key'.setup {
   },
 }
 
-local opts = {
+local normal_opts = {
   mode = "n", -- NORMAL mode
   prefix = "<leader>",
   buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
@@ -65,6 +65,23 @@ local opts = {
   noremap = true, -- use `noremap` when creating keymaps
   nowait = false, -- use `nowait` when creating keymaps
 }
+
+local visual_opts = {
+  mode = "v", -- VISUAL mode
+  prefix = "<leader>",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = false, -- use `nowait` when creating keymaps
+}
+
+local code_painter_mappings = {
+    name = 'mark code section',
+    p = {"<ESC><CMD>'<,'>call codepainter#paintText(visualmode())<CR>", 'mark selected code'},
+    c = {"<CMD>call codepainter#EraseAll()<CR>", 'clear all marked code'},
+    n = {"<CMD>call codepainter#navigate()<CR>", 'go to next marked code'}
+  }
+
 
 local mappings = {
 
@@ -190,7 +207,10 @@ local mappings = {
     u = { 'node selection decrement' },
     s = { 'scope selection increment' }
   },
+
+  m = code_painter_mappings
 }
 
 local wk = require "which-key"
-wk.register(mappings, opts)
+wk.register(mappings, normal_opts)
+wk.register(mappings, visual_opts)

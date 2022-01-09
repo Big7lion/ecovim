@@ -99,6 +99,7 @@ local function init()
   use {'rcarriga/nvim-notify'}
   use {'tjdevries/vlog.nvim'}
   use {'vuki656/package-info.nvim', disable = not EcoVim.plugins.package_info.enabled}
+  use {'lpinilla/vim-codepainter', config = "require('plugins.codepainter')"}
   -- Snippets & Language & Syntax
   use {'windwp/nvim-autopairs', after = {'nvim-treesitter', 'nvim-cmp'}, config = "require('plugins.autopairs')"}
   use {'p00f/nvim-ts-rainbow', after = {'nvim-treesitter'}}
