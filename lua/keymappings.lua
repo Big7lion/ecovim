@@ -27,7 +27,7 @@ keymap("v", ">", ">gv", { noremap = true, silent = true })
 -- Better word select
 keymap("n", "<C-d>", "<leader>td", { silent = true })
 keymap("v", "<C-d>", "<leader>td", { silent = true })
-keymap("v", "<C-i>", "<leader>ti", { silent = true })
+keymap("v", "<C-a>", "<leader>ti", { silent = true })
 keymap("v", "<C-u>", "<leader>tu", { silent = true })
 keymap("i", "<C-d>", "<ESC><leader>td", { silent = true })
 
@@ -83,8 +83,3 @@ keymap("n", "<F4>", "<CMD>lua vim.lsp.buf.rename()<CR>", { noremap = true, silen
 keymap("n", "<A-f>", "<CMD>lua vim.lsp.buf.formatting()<CR>", { noremap = true, silent = true })
 keymap("v", "<A-f>", "<CMD>'<.'>lua vim.lsp.buf.range_formatting()<CR>", { noremap = true, silent = true })
 keymap("n", "K", "<CMD>lua vim.lsp.buf.hover()<CR>", { noremap = true, silent = true })
--- keymap("n", "[g", "<cmd>lua vim.diagnostic.goto_next({ float = { border = 'rounded' }})<CR>", { noremap = true, silent = true })
--- keymap("n", "]g", "<cmd>lua vim.diagnostic.goto_prev({ float = { border = 'rounded' }})<CR>", { noremap = true, silent = true })
-
--- Markdown preview
-keymap('n', "<leader>mp", "<CMD>:Glow<CR>", { noremap = true, silent = true })

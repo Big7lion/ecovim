@@ -7,22 +7,22 @@ local is_installed = vim.fn.empty(vim.fn.glob(install_path)) == 0
 
 local function init()
   if not is_installed then
-      if vim.fn.input("Install packer.nvim? (y for yes) ") == "y" then
-          execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
-          execute("packadd packer.nvim")
-          print("Installed packer.nvim.")
-          is_installed = 1
-      end
+    if vim.fn.input("Install packer.nvim? (y for yes) ") == "y" then
+      execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
+      execute("packadd packer.nvim")
+      print("Installed packer.nvim.")
+      is_installed = 1
+    end
   end
 
   if not is_installed then return end
   if packer == nil then
-      packer = require('packer')
-      packer.init({
-          -- we don't want the compilation file in '~/.config/nvim'
-          disable_commands = true,
-          compile_path = compile_path
-      })
+    packer = require('packer')
+    packer.init({
+      -- we don't want the compilation file in '~/.config/nvim'
+      disable_commands = true,
+      compile_path = compile_path
+    })
   end
 
   local use = packer.use
@@ -44,22 +44,32 @@ local function init()
 
   -- Treesitter
   use {'nvim-treesitter/nvim-treesitter',
-      config = "require('plugins.treesitter')",
-      run = ':TSUpdate'}
+    config = "require('plugins.treesitter')",
+    run = ':TSUpdate'}
   use {'nvim-treesitter/nvim-treesitter-textobjects', after = {'nvim-treesitter'}}
   use {'RRethy/nvim-treesitter-textsubjects', after = {'nvim-treesitter'}}
 
   -- Telescope
   use {'nvim-telescope/telescope.nvim',
-      config = "require('plugins.telescope')",
-      requires = {
-        {'nvim-lua/popup.nvim'},
-        {'nvim-lua/plenary.nvim'},
-        {'nvim-telescope/telescope-fzf-native.nvim'}
-      }
+    config = "require('plugins.telescope')",
+    requires = {
+      {'nvim-lua/popup.nvim'},
+      {'nvim-lua/plenary.nvim'},
+      {'nvim-telescope/telescope-fzf-native.nvim'},
     }
+  }
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-  use {'cljoly/telescope-repo.nvim'}
+  use {'fhill2/telescope-ultisnips.nvim'}
+  use {'xiyaowong/telescope-emoji.nvim'}
+  use {
+  'sudormrfbin/cheatsheet.nvim',
+
+  requires = {
+    {'nvim-telescope/telescope.nvim'},
+    {'nvim-lua/popup.nvim'},
+    {'nvim-lua/plenary.nvim'},
+  }
+}
 
   -- LSP Base
   use {'neovim/nvim-lspconfig'}

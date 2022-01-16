@@ -4,7 +4,7 @@ local async = require("plenary.async")
 -- Custom Folds, make them look better
 vim.cmd([[
   function! CustomFold()
-    return printf('   %-6d%s', v:foldend - v:foldstart + 1, getline(v:foldstart))
+    return printf(' %-6d%s', v:foldend - v:foldstart + 1, getline(v:foldstart))
   endfunction
 ]])
 
@@ -20,12 +20,12 @@ local M = {}
 
 M.erase_painter_line = function()
   vim.api.nvim_command("PainterEraseLine")
-  require('notify')("Erased line", "info", { title = "Painter", timeout = 1000 })
+  require('notify')("Erased line", "info", { title = "Code Painter", timeout = 1000 })
 end
 
 M.painter_selection_color = function ()
-  vim.fn['codepainter#paintText']('')
-  require('notify')("paintText", "info", { title = "Painter", timeout = 1000 })
+  vim.api.nvim_command('call codepainter#paintText(visualmode())')
+  require('notify')("paint selection", "info", { title = "Code Painter", timeout = 1000 })
 end
 
 M.first_ecovim_run = function()

@@ -77,7 +77,8 @@ local visual_opts = {
 
 local code_painter_mappings = {
     name = 'mark code section',
-    p = {"<ESC><CMD>'<,'>call codepainter#paintText(visualmode())<CR>", 'mark selected code'},
+    p = {"<ESC><cmd>lua require('functions').painter_selection_color()<CR>", 'mark selected code'},
+    r = {"<CMD>lua require('functions').erase_painter_line()<CR>", 'remove current highlight'},
     c = {"<CMD>call codepainter#EraseAll()<CR>", 'clear all marked code'},
     n = {"<CMD>call codepainter#navigate()<CR>", 'go to next marked code'}
   }
@@ -198,6 +199,9 @@ local mappings = {
     h = { '<cmd>Telescope oldfiles<CR>',                             'file history' },
     H = { '<cmd>Telescope command_history<CR>',                      'command history' },
     s = { '<cmd>Telescope search_history<CR>',                       'search history' },
+    m = { '<cmd>Telescope marks<CR>',                                'marks'},
+    k = { '<cmd>Telescope keymaps<CR>',                              'keymapping'},
+    S = { '<cmd>Telescope ultisnips<CR>',                            'snippets'}
   },
 
   t = {
