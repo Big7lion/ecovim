@@ -35,5 +35,10 @@ local colors = function(opts)
   }):find()
 end
 
-colors(require('telescope.themes').get_dropdown{})
+-- colors(require('telescope.themes').get_dropdown{})
 -- colors()
+--
+
+vim.api.nvim_buf_set_mark(0, 'A', 16, 4, {})
+print(vim.inspect(vim.api.nvim_get_mark('A', {})))
+

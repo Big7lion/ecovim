@@ -19,6 +19,14 @@ keymap("i", "<C-h>", "<Left>", { silent = true })
 keymap("i", "<C-j>", "<Down>", { silent = true })
 keymap("i", "<C-k>", "<Up>", { silent = true })
 keymap("i", "<C-l>", "<Right>", { silent = true })
+keymap("n", "<A-d>", ":+35<CR>", {silent = true })
+keymap("n", "<A-u>", ":-35<CR>", {silent = true })
+keymap("v", "<A-d>", "<ESC>:+35<CR>", {silent = true })
+keymap("v", "<A-u>", "<ESC>:-35<CR>", {silent = true })
+keymap("i", "<A-d>", "<ESC>:+35<CR>i", {silent = true })
+keymap("i", "<A-u>", "<ESC>:-35<CR>i", {silent = true })
+keymap("i", "<C-b>", "<Backspace>", {silent = true})
+keymap("i", "<A-b>", "<Del>", {silent = true})
 
 -- Keep visual mode indenting
 keymap("v", "<", "<gv", { noremap = true, silent = true })
@@ -30,6 +38,8 @@ keymap("v", "<C-d>", "<leader>td", { silent = true })
 keymap("v", "<C-a>", "<leader>ti", { silent = true })
 keymap("v", "<C-u>", "<leader>tu", { silent = true })
 keymap("i", "<C-d>", "<ESC><leader>td", { silent = true })
+
+keymap('v', "u", "<ESC>u", { silent = true })
 
 -- keep the undo and redo in edit mode
 keymap("i", "<C-z>", "<ESC>ui", {noremap = true, silent = true})
@@ -57,8 +67,11 @@ keymap("n", "<Leader>glc", "<CMD>lua require('plugins.telescope').my_git_bcommit
 -- Buffers
 keymap("n", "<Tab>", ":BufferNext<CR>", { noremap = true, silent = true })
 keymap("n", "<S-Tab>", ":BufferPrevious<CR>", { noremap = true, silent = true })
-keymap("n", "<S-q>", ":BufferClose<CR>", { noremap = true, silent = true })
+keymap("n", "<A-,>", ":BufferPrevious<CR>", { noremap = true, silent = true })
+keymap("n", "<A-.>", ":BufferNext<CR>", { noremap = true, silent = true })
 keymap("n", "<C-x>", ":BufferClose<CR>", { noremap = true, silent = true })
+keymap('n', '<A-<>', ':BufferMovePrevious<CR>', { noremap = true, silent = true })
+keymap('n', '<A->>', ' :BufferMoveNext<CR>', { noremap = true, silent = true })
 
 -- Don't yank on delete char
 keymap("n", "x", '"_x', { noremap = true, silent = true })

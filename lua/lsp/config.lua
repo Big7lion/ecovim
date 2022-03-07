@@ -14,7 +14,7 @@ end
 require('lsp.servers.bash')
 require('lsp.servers.css')
 require('lsp.servers.eslint')
-require('lsp.servers.html')
+-- require('lsp.servers.html')
 require('lsp.servers.json')
 require('lsp.servers.lua')
 require('lsp.servers.tsserver')
