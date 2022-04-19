@@ -24,7 +24,7 @@
       ['n <leader>ghp'] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
       ['n <leader>gm']  = '<cmd>lua require"gitsigns".blame_line{full=true}<CR>',
     },
-    watch_index = {
+    watch_gitdir = {
       interval = 700,
       follow_files = true
     },

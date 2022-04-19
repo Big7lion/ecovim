@@ -95,7 +95,7 @@ local function init()
   use {'ellisonleao/glow.nvim', config = function() vim.g.glow_border = "rounded" end}
   use {'AndrewRadev/switch.vim'}
   use {'AndrewRadev/splitjoin.vim'}
-  use {'numToStr/Comment.nvim', config = "require('plugins.comment')"}
+  use {'numToStr/Comment.nvim', tag = 'v0.6', config = "require('plugins.comment')"}
   use {'akinsho/nvim-toggleterm.lua', config = "require('plugins.toggleterm')"}
   use {'tpope/vim-repeat'}
   use {'mg979/vim-visual-multi'}
@@ -116,7 +116,7 @@ local function init()
   use {'mattn/emmet-vim'}
   use {'lukas-reineke/indent-blankline.nvim', config = "require('plugins.indent')"}
   use {'norcalli/nvim-colorizer.lua', config = "require('plugins.colorizer')"}
-  use {'SirVer/ultisnips', requires = {"honza/vim-snippets"}, config = "require('plugins.ultisnips')", after = 'cmp-nvim-ultisnips'}
+  use {'SirVer/ultisnips', requires = {"Big7Lion/vim-snippets"}, config = "require('plugins.ultisnips')", after = 'cmp-nvim-ultisnips'}
   use {'voldikss/vim-translator'}
   use {'prettier/vim-prettier'}
 
