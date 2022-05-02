@@ -25,6 +25,8 @@ local source_mapping = {
   zsh         = EcoVim.icons.terminal .. '[ZSH]',
 }
 
+local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
+
 cmp.setup {
   snippet = {
     expand = function(args)

@@ -95,7 +95,7 @@ local function init()
   use {'ellisonleao/glow.nvim', config = function() vim.g.glow_border = "rounded" end}
   use {'AndrewRadev/switch.vim'}
   use {'AndrewRadev/splitjoin.vim'}
-  use {'numToStr/Comment.nvim', tag = 'v0.6', config = "require('plugins.comment')"}
+  use {'numToStr/Comment.nvim', config = "require('plugins.comment')"}
   use {'akinsho/nvim-toggleterm.lua', config = "require('plugins.toggleterm')"}
   use {'tpope/vim-repeat'}
   use {'mg979/vim-visual-multi'}
@@ -122,6 +122,10 @@ local function init()
 
   -- Nvim Tree
   use {'kyazdani42/nvim-tree.lua', config = "require('plugins.tree')"}
+  use { 'Shatur/neovim-session-manager',
+    requires = { 'nvim-lua/plenary.nvim'},
+    config = "require('plugins.sessions')"
+  }
 
   -- Debug
   -- TODO: Configure dap

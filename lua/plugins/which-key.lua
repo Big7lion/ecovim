@@ -213,7 +213,16 @@ local mappings = {
     s = { 'scope selection increment' }
   },
 
-  m = code_painter_mappings
+  m = code_painter_mappings,
+
+  l = {
+    name = "Session Manager",
+    l = { '<cmd>SessionManager load_last_session<CR>',              'open the last saved session' },
+    p = { '<cmd>SessionManager load_session<CR>',                   'Select and load session'},
+    c = { '<cmd>SessionManager load_last_session<CR>',              'open the last saved session file of the current dirtectory'},
+    s = { '<cmd>SessionManager save_current_session<CR>',           'saves/creates current directory as a session'},
+    d = { '<cmd>SessionManager delete_session<CR>',                 'Select and delete session'}
+  }
 }
 
 local wk = require "which-key"

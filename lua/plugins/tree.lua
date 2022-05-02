@@ -9,14 +9,12 @@ require'nvim-tree'.setup {
   open_on_setup       = false,
   -- will not open on setup if the filetype is in this list
   ignore_ft_on_setup  = {},
-  -- closes neovim automatically when the tree is the last **WINDOW** in the view
-  auto_close          = false,
   -- opens the tree when changing/opening a new tab if the tree wasn't previously opened
   open_on_tab         = false,
   -- hijack the cursor in the tree to put it at the start of the filename
   hijack_cursor       = true,
   -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually)
-  update_cwd          = true,
+  update_cwd          = false,
   -- show lsp diagnostics in the signcolumn
   diagnostics         = {
     enable = false,
@@ -60,8 +58,6 @@ require'nvim-tree'.setup {
     hide_root_folder = false,
     -- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
     side = 'left',
-    -- if true the tree will resize itself after opening a file
-    auto_resize = true,
     mappings = {
       -- custom only false will merge the list with the default mappings
       -- if true, it will only use your list to set the mappings
@@ -71,11 +67,17 @@ require'nvim-tree'.setup {
       }
     },
     number = true,
-    relativenumber = true
+    relativenumber = false
   },
   trash = {
     cmd = "trash",
     require_confirm = true
-  }
+  },
+  actions = {
+    use_system_clipboard = true,
+    open_file = {
+      resize_window = true
+    }
+  },
 }
 vim.api.nvim_set_keymap("n", "<C-e>", "<cmd>lua require'nvim-tree'.toggle()<CR>", {noremap = true, silent = true})
