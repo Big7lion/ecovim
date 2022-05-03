@@ -96,3 +96,7 @@ keymap("n", "<F4>", "<CMD>lua vim.lsp.buf.rename()<CR>", { noremap = true, silen
 keymap("n", "<A-f>", "<CMD>lua vim.lsp.buf.formatting()<CR>", { noremap = true, silent = true })
 keymap("v", "<A-f>", "<CMD>'<.'>lua vim.lsp.buf.range_formatting()<CR>", { noremap = true, silent = true })
 keymap("n", "K", "<CMD>lua vim.lsp.buf.hover()<CR>", { noremap = true, silent = true })
+keymap("n", "<leader>ot", "<CMD>AerialToggle right<CR>", { noremap = true, silent = true })
+keymap("n", "<leader>oo", "<CMD>AerialTreeToggle<CR>", { noremap = true, silent = true})
+keymap("n", "<leader>os", "<CMD>AerialTreeSyncFolds<CR>", { noremap = true, silent = true })
+

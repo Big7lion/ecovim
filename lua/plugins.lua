@@ -96,7 +96,7 @@ local function init()
   use {'AndrewRadev/switch.vim'}
   use {'AndrewRadev/splitjoin.vim'}
   use {'numToStr/Comment.nvim', config = "require('plugins.comment')"}
-  use {'akinsho/nvim-toggleterm.lua', config = "require('plugins.toggleterm')"}
+  use {'akinsho/toggleterm.nvim', config = "require('plugins.toggleterm')"}
   use {'tpope/vim-repeat'}
   use {'mg979/vim-visual-multi'}
   use {'JoosepAlviste/nvim-ts-context-commentstring', after = 'nvim-treesitter'}
@@ -125,6 +125,10 @@ local function init()
   use { 'Shatur/neovim-session-manager',
     requires = { 'nvim-lua/plenary.nvim'},
     config = "require('plugins.sessions')"
+  }
+  use { 'stevearc/aerial.nvim', 
+    requires = { 'nvim-treesitter/nvim-treesitter' },
+    config = "require('plugins.outline')"
   }
 
   -- Debug

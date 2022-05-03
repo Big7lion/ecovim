@@ -222,6 +222,13 @@ local mappings = {
     c = { '<cmd>SessionManager load_last_session<CR>',              'open the last saved session file of the current dirtectory'},
     s = { '<cmd>SessionManager save_current_session<CR>',           'saves/creates current directory as a session'},
     d = { '<cmd>SessionManager delete_session<CR>',                 'Select and delete session'}
+  },
+
+  o = {
+    name = "Code Outline",
+    t = { 'Open or close the aerial window' },
+    o = { 'Toggle tree at current location' },
+    s = { 'Sync code folding with current tree state' }
   }
 }
 
