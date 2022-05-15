@@ -50,6 +50,7 @@ local function init()
   use {'RRethy/nvim-treesitter-textsubjects', after = {'nvim-treesitter'}}
 
   -- Telescope
+  use 'cljoly/telescope-repo.nvim'
   use {'nvim-telescope/telescope.nvim',
     config = "require('plugins.telescope')",
     requires = {
@@ -62,14 +63,15 @@ local function init()
   use {'fhill2/telescope-ultisnips.nvim'}
   use {'xiyaowong/telescope-emoji.nvim'}
   use {
-  'sudormrfbin/cheatsheet.nvim',
+    'sudormrfbin/cheatsheet.nvim',
 
-  requires = {
-    {'nvim-telescope/telescope.nvim'},
-    {'nvim-lua/popup.nvim'},
-    {'nvim-lua/plenary.nvim'},
+    requires = {
+      {'nvim-telescope/telescope.nvim'},
+      {'nvim-lua/popup.nvim'},
+      {'nvim-lua/plenary.nvim'},
+    }
   }
-}
+
 
   -- LSP Base
   use {'neovim/nvim-lspconfig'}
@@ -86,13 +88,15 @@ local function init()
   use {'williamboman/nvim-lsp-installer', event = 'BufEnter', after = 'cmp-nvim-lsp', config = "require('lsp.installer')"}
   use {'stevearc/dressing.nvim', requires = 'MunifTanjim/nui.nvim', config = "require('plugins.dressing')"}
   use {'onsails/lspkind-nvim'}
-  use {'folke/lsp-trouble.nvim', config = "require('plugins.trouble')"}
+  use {'folke/trouble.nvim', config = "require('plugins.trouble')"}
   use {'nvim-lua/popup.nvim'}
   use {'SmiteshP/nvim-gps', config = "require('plugins.gps')", after = 'nvim-treesitter'}
   use {'jose-elias-alvarez/nvim-lsp-ts-utils'}
+  use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim', config = "require('plugins.flutter-tools')"}
 
   -- General
   use {'ellisonleao/glow.nvim', config = function() vim.g.glow_border = "rounded" end}
+  use { 'iamcco/markdown-preview.nvim', run = "cd app && yarn install" }
   use {'AndrewRadev/switch.vim'}
   use {'AndrewRadev/splitjoin.vim'}
   use {'numToStr/Comment.nvim', config = "require('plugins.comment')"}
@@ -126,15 +130,15 @@ local function init()
     requires = { 'nvim-lua/plenary.nvim'},
     config = "require('plugins.sessions')"
   }
-  use { 'stevearc/aerial.nvim', 
+  use { 'stevearc/aerial.nvim',
     requires = { 'nvim-treesitter/nvim-treesitter' },
     config = "require('plugins.outline')"
   }
 
   -- Debug
   -- TODO: Configure dap
-  -- use {'rcarriga/nvim-dap-ui', requires = {"mfussenegger/nvim-dap"}}
-  -- use {'mfussenegger/nvim-dap', config = "require('plugins.dap')"}
+  use {'rcarriga/nvim-dap-ui', requires = {"mfussenegger/nvim-dap"}}
+  use {'mfussenegger/nvim-dap', config = "require('plugins.dap')"}
 
   -- Git
   use {'lewis6991/gitsigns.nvim',
@@ -143,6 +147,9 @@ local function init()
     event = "BufRead"
   }
   use {'sindrets/diffview.nvim'}
+  use {'akinsho/git-conflict.nvim', config = function()
+    require('git-conflict').setup()
+  end}
 end
 
 local plugins = setmetatable({}, {

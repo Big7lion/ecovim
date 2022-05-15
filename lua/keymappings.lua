@@ -54,8 +54,8 @@ keymap("n", "<C-s>", ":w<CR>", { noremap = true, silent = true })
 keymap("i", "<C-s>", "<ESC> :w<CR>", { noremap = true, silent = true })
 
 -- Telescope
+keymap("n", "<S-p>", "<CMD>lua require('plugins.telescope').search_files()<CR>", { noremap = true })
 keymap("n", "<C-p>", "<CMD>lua require('plugins.telescope').project_files()<CR>", { noremap = true })
-keymap("n", "<S-p>", "<CMD>Telescope live_grep<CR>", { noremap = true })
 
 -- Remove highlights
 keymap("n", "<CR>", ":noh<CR><CR>", { noremap = true, silent = true })
@@ -90,6 +90,7 @@ keymap("n", "<F2>", "<CMD>lua vim.lsp.buf.definition()<CR>", { noremap = true, s
 keymap("v", "<F2>", "<CMD>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
 keymap("n", "<F3>", "<CMD>lua vim.lsp.buf.references()<CR>", { noremap = true, silent = true })
 keymap("v", "<F3>", "<CMD>lua vim.lsp.buf.references()<CR>", { noremap = true, silent = true })
+keymap("n", "<F5>", "<CMD>e<CR>", { noremap = true, silent = true })
 keymap("n", "<A-q>", "<CMD>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
 keymap("v", "<A-q>", "<CMD>'<,'>lua vim.lsp.buf.range_code_action()<CR>", { noremap = true, silent = true })
 keymap("n", "<F4>", "<CMD>lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })

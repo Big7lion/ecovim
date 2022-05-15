@@ -10,6 +10,7 @@ local handlers =  {
   ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = EcoVim.ui.float.border}),
 }
 
+
 lsp_installer.on_server_ready(function(server)
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     local status_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')

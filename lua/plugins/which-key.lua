@@ -83,7 +83,6 @@ local code_painter_mappings = {
     n = {"<CMD>call codepainter#navigate()<CR>", 'go to next marked code'}
   }
 
-
 local mappings = {
 
   -- ignore
@@ -136,14 +135,11 @@ local mappings = {
     name = "LSP",
     a = { '<cmd>Telescope lsp_code_action<CR>',          'telescope code action' },
     c = "which_key_ignore",
-    d = { '<cmd>LspTroubleToggle<CR>',                   'local diagnostics' },
-    D = { '<cmd>Telescope lsp_document_diagnostics<CR>', 'diagnostics' },
+    d = { '<cmd>TroubleToggle document_diagnostics<CR>', 'local diagnostics' },
+    D = { '<cmd>TroubleToggle workspace<CR>', 'workspace diagnostics' },
     f = { 'format' },
     p = { '<cmd>Prettier<CR>',                           'prettier' },
-    i = { '<cmd>TSLspImportAll<CR>',                     'import all'},
     l = { 'line diagnostics' },
-    o = { '<cmd>TSLspOrganize<CR>',                      'organize imports'},
-    q = { '<cmd>TSLspFixCurrent<CR>',                    'quick fix' },
     r = { 'rename' },
     s = { '<cmd>Telescope symbols<CR>',                  'symbols' },
   },
@@ -185,12 +181,7 @@ local mappings = {
 
   p = {
     name = "Project",
-    f = { 'file' },
-    w = { 'word' },
-    l = { "<cmd>lua require'telescope'.extensions.repo.cached_list{file_ignore_patterns={'/%.cache/', '/%.cargo/', '/%.local/', '/%timeshift/', '/usr/', '/srv/', '/%.oh%-my%-zsh'}}<CR>", 'list' },
     t = { "<cmd>TodoTrouble<CR>",                                    'todo' },
-    s = { "<cmd>SessionSave<CR>",                                    'save session' },
-    S = { "<cmd>SessionLoad<CR>",                                    'load session' }
   },
 
   s = {
@@ -202,7 +193,9 @@ local mappings = {
     s = { '<cmd>Telescope search_history<CR>',                       'search history' },
     m = { '<cmd>Telescope marks<CR>',                                'marks'},
     k = { '<cmd>Telescope keymaps<CR>',                              'keymapping'},
-    S = { '<cmd>Telescope ultisnips<CR>',                            'snippets'}
+    S = { '<cmd>Telescope ultisnips<CR>',                            'snippets'},
+    p = { '<cmd>Telescope live_grep<CR>',                            'search file content'},
+    t = { '<cmd>Telescope treesitter<CR>',                           'treesitter'},
   },
 
   t = {

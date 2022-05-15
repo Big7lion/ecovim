@@ -24,7 +24,7 @@ require('dressing').setup({
 
     -- see :help dressing_get_config
     get_config = function(opts)
-      if opts.kind == 'codeaction' then
+      if opts.kind == 'codeaction' or opts.kind == 'diagnostics' then
         return {
           backend = 'nui',
           nui = {

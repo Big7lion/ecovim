@@ -58,6 +58,8 @@ require('telescope').setup {
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('ultisnips')
 require("telescope").load_extension("emoji")
+require("telescope").load_extension('repo')
+require("telescope").load_extension('flutter')
 
 -- Implement delta as previewer for diffs
 
@@ -119,6 +121,11 @@ M.project_files = function()
   local opts = {} -- define here if you want to define something
   local ok = pcall(require"telescope.builtin".git_files, opts)
   if not ok then require"telescope.builtin".find_files(opts) end
+end
+
+M.search_files = function()
+  local opts = {}
+  require('telescope.builtin').live_grep(opts)
 end
 
 return M

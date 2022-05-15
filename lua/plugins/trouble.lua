@@ -9,7 +9,7 @@ require("trouble").setup {
   fold_open = "", -- icon used for open folds
   fold_closed = "", -- icon used for closed folds
   group = true, -- group results by file
-  padding = true, -- add an extra new line on top of the list
+  padding = false, -- add an extra new line on top of the list
   action_keys = { -- key mappings for actions in the trouble list
       -- map to {} to remove a mapping, for example:
       -- close = {},

@@ -1,6 +1,7 @@
 vim.g.nvim_tree_respect_buf_cwd = 1
 
 require'nvim-tree'.setup {
+  auto_reload_on_write = true,
   -- disables netrw completely
   disable_netrw       = false,
   -- hijack netrw window on startup
@@ -66,7 +67,7 @@ require'nvim-tree'.setup {
       list = {
       }
     },
-    number = true,
+    number = false,
     relativenumber = false
   },
   trash = {

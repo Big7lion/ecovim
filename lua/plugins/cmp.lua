@@ -51,12 +51,6 @@ cmp.setup {
       local menu = source_mapping[entry.source.name]
       local maxwidth = 50
 
-      if entry.source.name == 'cmp_tabnine' then
-				if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-					menu = menu .. '[' .. entry.completion_item.data.detail .. ']'
-				end
-			end
-
       vim_item.menu = menu
       vim_item.abbr = string.sub(vim_item.abbr, 1, maxwidth)
 
