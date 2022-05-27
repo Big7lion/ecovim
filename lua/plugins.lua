@@ -135,6 +135,9 @@ local function init()
     config = "require('plugins.outline')"
   }
 
+  -- Better cursor movement
+  use { 'justinmk/vim-sneak', config = "require('plugins.sneak')" }
+
   -- Debug
   -- TODO: Configure dap
   use {'rcarriga/nvim-dap-ui', requires = {"mfussenegger/nvim-dap"}}
