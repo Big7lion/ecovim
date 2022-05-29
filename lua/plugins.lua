@@ -137,6 +137,8 @@ local function init()
 
   -- Better cursor movement
   use { 'justinmk/vim-sneak', config = "require('plugins.sneak')" }
+  -- Better search & replacement
+  use { 'windwp/nvim-spectre' }
 
   -- Debug
   -- TODO: Configure dap

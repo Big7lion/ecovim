@@ -182,6 +182,9 @@ local mappings = {
   p = {
     name = "Project",
     t = { "<cmd>TodoTrouble<CR>",                                    'todo' },
+    S = { "<cmd>lua require('spectre').open()<CR>",                  'search and replace'},
+    s = { "<cmd>lua require('spectre').open_file_search()<CR>",      'search and replace in current file'},
+    v = { "<cmd>lua require('spectre').open_visual()<CR>",           'search current select visualmode' }
   },
 
   s = {
