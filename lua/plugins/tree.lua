@@ -1,6 +1,6 @@
-vim.g.nvim_tree_respect_buf_cwd = 1
-
 require'nvim-tree'.setup {
+  respect_buf_cwd = false,
+
   auto_reload_on_write = true,
   -- disables netrw completely
   disable_netrw       = false,

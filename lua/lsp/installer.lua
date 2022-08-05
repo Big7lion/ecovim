@@ -32,15 +32,15 @@ lsp_installer.on_server_ready(function(server)
       opts.settings = require('lsp.servers.css').settings
     end
 
-    if server.name == "eslint" then
-        opts.on_attach = function (client, bufnr)
-            -- neovim's LSP client does not currently support dynamic capabilities registration, so we need to set
-            -- the resolved capabilities of the eslint server ourselves!
-            client.resolved_capabilities.document_formatting = true
-            on_attach(client, bufnr)
-        end
-        opts.settings = require('lsp.servers.eslint').settings
-    end
+    -- if server.name == "eslint" then
+    --     opts.on_attach = function (client, bufnr)
+    --         -- neovim's LSP client does not currently support dynamic capabilities registration, so we need to set
+    --         -- the resolved capabilities of the eslint server ourselves!
+    --         client.resolved_capabilities.document_formatting = true
+    --         on_attach(client, bufnr)
+    --     end
+    --     opts.settings = require('lsp.servers.eslint').settings
+    -- end
 
     if server.name == "html" then
       opts.capabilities = require('lsp.servers.html').capabilities
@@ -55,8 +55,11 @@ lsp_installer.on_server_ready(function(server)
       opts.settings = require('lsp.servers.lua').settings
     end
 
-    if server.name == "vuels" then
-      opts.init_options = require('lsp.servers.vue').init_options
+    -- if server.name == "vuels" then
+    --   opts.init_options = require('lsp.servers.vue').init_options
+    -- end
+
+    if server.name == 'volar' then
     end
 
 

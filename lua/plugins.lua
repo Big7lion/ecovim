@@ -93,6 +93,7 @@ local function init()
   use {'SmiteshP/nvim-gps', config = "require('plugins.gps')", after = 'nvim-treesitter'}
   use {'jose-elias-alvarez/nvim-lsp-ts-utils'}
   use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim', config = "require('plugins.flutter-tools')"}
+  use { 'ziglang/zig.vim' }
 
   -- General
   use {'ellisonleao/glow.nvim', config = function() vim.g.glow_border = "rounded" end}
@@ -139,6 +140,7 @@ local function init()
   use { 'justinmk/vim-sneak', config = "require('plugins.sneak')" }
   -- Better search & replacement
   use { 'windwp/nvim-spectre' }
+  use { 'tpope/vim-surround' }
 
   -- Debug
   -- TODO: Configure dap

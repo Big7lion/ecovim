@@ -3,6 +3,7 @@ require("filetype").setup({
     extensions = {
        -- Set the filetype of *.rake files to ruby
        rake = "ruby",
+       cr = "crystal"
     },
   }
 })

@@ -33,11 +33,16 @@ vim.api.nvim_create_autocmd("CursorHold", {
 
 require('lsp.servers.bash')
 require('lsp.servers.css')
-require('lsp.servers.eslint')
+-- require('lsp.servers.eslint')
 -- require('lsp.servers.html')
 require('lsp.servers.json')
 require('lsp.servers.lua')
 require('lsp.servers.tsserver')
-require('lsp.servers.vue')
+-- require('lsp.servers.vue')
 require('lsp.servers.haskell')
 require('lsp.servers.solargraph')
+require('lsp.servers.volar')
+
+require'lspconfig'.crystalline.setup{
+  filetypes = { 'crystal', 'cr' },
+}
