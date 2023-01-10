@@ -12,11 +12,7 @@ local handlers =  {
 
 
 lsp_installer.on_server_ready(function(server)
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    local status_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
-    if status_ok then
-      capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
-    end
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
     local opts = {
         on_attach = on_attach,

@@ -4,7 +4,11 @@ local keymap = vim.api.nvim_set_keymap;
 keymap("n", "<A-h>", "<C-w>h", { silent = true })
 keymap("n", "<A-j>", "<C-w>j", { silent = true })
 keymap("n", "<A-k>", "<C-w>k", { silent = true })
-keymap("n", "<A-l>", "<C-w>l", { silent = true })
+keymap("n", "<A-h>", "<C-w>h", { silent = true })
+keymap("n", "<M-j>", "<C-w>j", { silent = true })
+keymap("n", "<M-k>", "<C-w>k", { silent = true })
+keymap("n", "<M-l>", "<C-w>l", { silent = true })
+keymap("n", "<M-l>", "<C-w>l", { silent = true })
 
 -- Better cursor movement
 keymap("n", "<C-h>", "<Left>", { silent = true })
@@ -25,8 +29,15 @@ keymap("v", "<A-d>", "<ESC>:+35<CR>", {silent = true })
 keymap("v", "<A-u>", "<ESC>:-35<CR>", {silent = true })
 keymap("i", "<A-d>", "<ESC>:+35<CR>i", {silent = true })
 keymap("i", "<A-u>", "<ESC>:-35<CR>i", {silent = true })
+keymap("n", "<M-d>", ":+35<CR>", {silent = true })
+keymap("n", "<M-u>", ":-35<CR>", {silent = true })
+keymap("v", "<M-d>", "<ESC>:+35<CR>", {silent = true })
+keymap("v", "<M-u>", "<ESC>:-35<CR>", {silent = true })
+keymap("i", "<M-d>", "<ESC>:+35<CR>i", {silent = true })
+keymap("i", "<M-u>", "<ESC>:-35<CR>i", {silent = true })
 keymap("i", "<C-b>", "<Backspace>", {silent = true})
 keymap("i", "<A-b>", "<Del>", {silent = true})
+keymap("i", "<M-b>", "<Del>", {silent = true})
 
 -- Keep visual mode indenting
 keymap("v", "<", "<gv", { noremap = true, silent = true })
@@ -52,6 +63,8 @@ keymap("v", "<S-t>", ":TranslateW<CR>", { noremap = true, silent = true })
 -- Save file by CTRL-S
 keymap("n", "<C-s>", ":w<CR>", { noremap = true, silent = true })
 keymap("i", "<C-s>", "<ESC> :w<CR>", { noremap = true, silent = true })
+keymap("n", "<M-s>", ":w<CR>", { noremap = true, silent = true })
+keymap("i", "<M-s>", "<ESC> :w<CR>", { noremap = true, silent = true })
 
 -- Telescope
 keymap("n", "<S-p>", "<CMD>lua require('plugins.telescope').search_files()<CR>", { noremap = true })
@@ -72,6 +85,8 @@ keymap("n", "<A-.>", ":BufferNext<CR>", { noremap = true, silent = true })
 keymap("n", "<C-x>", ":BufferClose<CR>", { noremap = true, silent = true })
 keymap('n', '<A-<>', ':BufferMovePrevious<CR>', { noremap = true, silent = true })
 keymap('n', '<A->>', ' :BufferMoveNext<CR>', { noremap = true, silent = true })
+keymap('n', '<M-<>', ':BufferMovePrevious<CR>', { noremap = true, silent = true })
+keymap('n', '<M->>', ' :BufferMoveNext<CR>', { noremap = true, silent = true })
 
 -- Don't yank on delete char
 keymap("n", "x", '"_x', { noremap = true, silent = true })
@@ -95,7 +110,9 @@ keymap("n", "<A-q>", "<CMD>lua vim.lsp.buf.code_action()<CR>", { noremap = true,
 keymap("v", "<A-q>", "<CMD>'<,'>lua vim.lsp.buf.range_code_action()<CR>", { noremap = true, silent = true })
 keymap("n", "<F4>", "<CMD>lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
 keymap("n", "<A-f>", "<CMD>lua vim.lsp.buf.formatting()<CR>", { noremap = true, silent = true })
-keymap("v", "<A-f>", "<CMD>'<.'>lua vim.lsp.buf.range_formatting()<CR>", { noremap = true, silent = true })
+keymap("n", "<A-f>", "<CMD>lua vim.lsp.buf.formatting()<CR>", { noremap = true, silent = true })
+keymap("v", "<M-f>", "<CMD>'<.'>lua vim.lsp.buf.range_formatting()<CR>", { noremap = true, silent = true })
+keymap("v", "<M-f>", "<CMD>'<.'>lua vim.lsp.buf.range_formatting()<CR>", { noremap = true, silent = true })
 keymap("n", "K", "<CMD>lua vim.lsp.buf.hover()<CR>", { noremap = true, silent = true })
 keymap("n", "<leader>ot", "<CMD>AerialToggle right<CR>", { noremap = true, silent = true })
 keymap("n", "<leader>oo", "<CMD>AerialTreeToggle<CR>", { noremap = true, silent = true})

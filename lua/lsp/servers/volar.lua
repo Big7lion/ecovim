@@ -2,7 +2,7 @@ local lspconfig = require'lspconfig'
 local lspconfig_configs = require'lspconfig.configs'
 local lspconfig_util = require 'lspconfig.util'
 
-local default_ts_server_path = '/home/biglion/.config/yarn/global/node_modules/typescript/lib/tsserverlibrary.js'
+local default_ts_server_path = '/Users/biglion/.config/yarn/global/node_modules/typescript/lib/tsserverlibrary.js'
 
 local function on_new_config(new_config, new_root_dir)
   local function get_typescript_server_path(root_dir)
