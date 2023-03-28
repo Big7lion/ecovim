@@ -115,6 +115,5 @@ keymap("v", "<M-f>", "<CMD>'<.'>lua vim.lsp.buf.range_formatting()<CR>", { norem
 keymap("v", "<M-f>", "<CMD>'<.'>lua vim.lsp.buf.range_formatting()<CR>", { noremap = true, silent = true })
 keymap("n", "K", "<CMD>lua vim.lsp.buf.hover()<CR>", { noremap = true, silent = true })
 keymap("n", "<leader>ot", "<CMD>AerialToggle right<CR>", { noremap = true, silent = true })
-keymap("n", "<leader>oo", "<CMD>AerialTreeToggle<CR>", { noremap = true, silent = true})
-keymap("n", "<leader>os", "<CMD>AerialTreeSyncFolds<CR>", { noremap = true, silent = true })
+keymap("n", "<leader>oo", "<CMD>AerialToggle right<CR>", { noremap = true, silent = true})
 

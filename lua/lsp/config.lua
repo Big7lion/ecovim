@@ -43,6 +43,6 @@ require('lsp.servers.haskell')
 require('lsp.servers.solargraph')
 require('lsp.servers.volar')
 
-require'lspconfig'.crystalline.setup{
-  filetypes = { 'crystal', 'cr' },
-}
+-- require'lspconfig'.crystalline.setup{
+--   filetypes = { 'crystal', 'cr' },
+-- }

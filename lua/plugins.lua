@@ -85,7 +85,8 @@ local function init()
   use {'quangnguyen30192/cmp-nvim-ultisnips', after = 'cmp-path'}
 
   -- LSP Addons
-  use {'williamboman/nvim-lsp-installer', event = 'BufEnter', after = 'cmp-nvim-lsp', config = "require('lsp.installer')"}
+  use({ "williamboman/mason-lspconfig.nvim" })
+  use { 'williamboman/mason.nvim', event = 'BufEnter', config = "require('lsp.mason')" }
   use {'stevearc/dressing.nvim', requires = 'MunifTanjim/nui.nvim', config = "require('plugins.dressing')"}
   use {'onsails/lspkind-nvim'}
   use {'folke/trouble.nvim', config = "require('plugins.trouble')"}
@@ -93,17 +94,23 @@ local function init()
   use {'SmiteshP/nvim-gps', config = "require('plugins.gps')", after = 'nvim-treesitter'}
   use {'jose-elias-alvarez/nvim-lsp-ts-utils'}
   use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim', config = "require('plugins.flutter-tools')"}
+	-- use {
+	-- 	"lvimuser/lsp-inlayhints.nvim",
+	-- 	branch = "main", -- or "anticonceal"
+	-- 	config = function()
+	-- 		require("plugins.inlay-hints")
+	-- 	end,
+	-- }
   use { 'ziglang/zig.vim' }
+	use { "jose-elias-alvarez/typescript.nvim" }
 
   -- General
   use {'ellisonleao/glow.nvim', config = function() vim.g.glow_border = "rounded" end}
   use { 'iamcco/markdown-preview.nvim', run = "cd app && yarn install" }
-  use {'AndrewRadev/switch.vim'}
-  use {'AndrewRadev/splitjoin.vim'}
   use {'numToStr/Comment.nvim', config = "require('plugins.comment')"}
   use {'akinsho/toggleterm.nvim', config = "require('plugins.toggleterm')"}
   use {'tpope/vim-repeat'}
-  use {'mg979/vim-visual-multi'}
+  use {'mg979/vim-visual-multi', config = "require('plugins.multi')"}
   use {'JoosepAlviste/nvim-ts-context-commentstring', after = 'nvim-treesitter'}
   use {'nacro90/numb.nvim', config = "require('plugins.numb')"}
   use {'folke/todo-comments.nvim'}
@@ -117,6 +124,7 @@ local function init()
   use {'lpinilla/vim-codepainter', config = "require('plugins.codepainter')"}
   -- Snippets & Language & Syntax
   use {'windwp/nvim-autopairs', after = {'nvim-treesitter', 'nvim-cmp'}, config = "require('plugins.autopairs')"}
+  use { 'windwp/nvim-ts-autotag', config = "require('nvim-ts-autotag').setup()" }
   use {'p00f/nvim-ts-rainbow', after = {'nvim-treesitter'}}
   use {'mattn/emmet-vim'}
   use {'lukas-reineke/indent-blankline.nvim', config = "require('plugins.indent')"}

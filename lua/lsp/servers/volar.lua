@@ -5,7 +5,7 @@ local lspconfig_util = require 'lspconfig.util'
 local default_ts_server_path = '/Users/biglion/.config/yarn/global/node_modules/typescript/lib/tsserverlibrary.js'
 
 local function on_new_config(new_config, new_root_dir)
-  local function get_typescript_server_path(root_dir)
+  local function get_typescript_server_path(_)
     -- local project_root = lspconfig_util.find_node_modules_ancestor(root_dir)
     -- return project_root and (lspconfig_util.path.join(project_root, 'node_modules', 'typescript', 'lib', 'tsserverlibrary.js'))
       -- or ''

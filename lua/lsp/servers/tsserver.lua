@@ -1,80 +1,136 @@
--- local handlers =  {
---   ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = EcoVim.ui.float.border}),
---   ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = EcoVim.ui.float.border}),
--- }
---
--- local capabilities = vim.lsp.protocol.make_client_capabilities()
--- local status_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
--- if status_ok then
---   capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
--- end
--- capabilities.textDocument.completion.completionItem.snippetSupport = true
--- capabilities.textDocument.completion.completionItem.preselectSupport = true
--- capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
--- capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
--- capabilities.textDocument.completion.completionItem.deprecatedSupport = true
--- capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
--- capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
--- capabilities.textDocument.completion.completionItem.resolveSupport = {
---   properties = {
---     'documentation',
---     'detail',
---     'additionalTextEdits',
---   }
--- }
+local M = {}
 
--- npm install -g typescript typescript-language-server
-require'lspconfig'.tsserver.setup({
-  -- handlers = handlers,
-  -- capabilities = capabilities,
-  init_options = require('nvim-lsp-ts-utils').init_options,
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-  on_attach = function(client, bufnr)
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.preselectSupport = true
+capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
+capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+	properties = {
+		"documentation",
+		"detail",
+		"additionalTextEdits",
+	},
+}
+capabilities.textDocument.codeAction = {
+	dynamicRegistration = false,
+	codeActionLiteralSupport = {
+		codeActionKind = {
+			valueSet = {
+				"",
+				"quickfix",
+				"refactor",
+				"refactor.extract",
+				"refactor.inline",
+				"refactor.rewrite",
+				"source",
+				"source.organizeImports",
+			},
+		},
+	},
+}
+capabilities.textDocument.foldingRange = {
+	dynamicRegistration = false,
+	lineFoldingOnly = true,
+}
 
-    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-    buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+local on_attach = function(client, bufnr)
+	-- Modifying a server's capabilities is not recommended and is no longer
+	-- necessary thanks to the `vim.lsp.buf.format` API introduced in Neovim
+	-- 0.8. Users with Neovim 0.7 needs to uncomment below lines to make tsserver formatting work (or keep using eslint).
 
-    local ts_utils = require('nvim-lsp-ts-utils')
+	-- client.server_capabilities.documentFormattingProvider = false
+	-- client.server_capabilities.documentRangeFormattingProvider = false
 
-    ts_utils.setup {
-        debug = true,
-        enable_import_on_completion = true,
-        import_all_timeout = 5000, -- ms
+	local function buf_set_option(...)
+		vim.api.nvim_buf_set_option(bufnr, ...)
+	end
 
-        -- eslint
-        eslint_enable_code_actions = false,
-        eslint_enable_disable_comments = false,
-        eslint_bin = 'eslint_d',
-        eslint_config_fallback = nil,
-        eslint_enable_diagnostics = false,
-        eslint_opts = {
-          -- diagnostics_format = "#{m} [#{c}]",
-          condition = function(utils)
-              return utils.root_has_file(".eslintrc.js")
-          end,
-        },
+	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
-        -- formatting
-        enable_formatting = false,
-        formatter = 'prettier_d_slim',
-        formatter_config_fallback = nil,
+	-- require("lsp-inlayhints").on_attach(client, bufnr)
+end
 
-        -- parentheses completion
-        complete_parens = false,
-        signature_help_in_parens = false,
+local function filter(arr, fn)
+	if type(arr) ~= "table" then
+		return arr
+	end
 
-        -- update imports on file move
-        update_imports_on_move = true,
-        require_confirmation_on_move = true,
-        watch_dir = nil,
+	local filtered = {}
+	for k, v in pairs(arr) do
+		if fn(v, k, arr) then
+			table.insert(filtered, v)
+		end
+	end
 
-        -- filter diagnostics
-        filter_out_diagnostics_by_severity = { "hint" },
-        filter_out_diagnostics_by_code = {},
-    }
+	return filtered
+end
 
-    ts_utils.setup_client(client)
-  end
-})
+local function filterReactDTS(value)
+	-- Depending on typescript version either uri or targetUri is returned
+	if value.uri then
+		return string.match(value.uri, "%.d.ts") == nil
+	elseif value.targetUri then
+		return string.match(value.targetUri, "%.d.ts") == nil
+	end
+end
+
+local handlers = {
+	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = EcoVim.ui.float.border }),
+	["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = EcoVim.ui.float.border }),
+	["textDocument/publishDiagnostics"] = vim.lsp.with(
+		vim.lsp.diagnostic.on_publish_diagnostics,
+		{ virtual_text = EcoVim.lsp.virtual_text }
+	),
+	["textDocument/definition"] = function(err, result, method, ...)
+		if vim.tbl_islist(result) and #result > 1 then
+			local filtered_result = filter(result, filterReactDTS)
+			return vim.lsp.handlers["textDocument/definition"](err, filtered_result, method, ...)
+		end
+
+		vim.lsp.handlers["textDocument/definition"](err, result, method, ...)
+	end,
+}
+
+local settings = {
+	typescript = {
+		-- inlayHints = {
+		-- 	includeInlayParameterNameHints = "all",
+		-- 	includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+		-- 	includeInlayFunctionParameterTypeHints = true,
+		-- 	includeInlayVariableTypeHints = false,
+		-- 	includeInlayPropertyDeclarationTypeHints = true,
+		-- 	includeInlayFunctionLikeReturnTypeHints = false,
+		-- 	includeInlayEnumMemberValueHints = true,
+		-- },
+    serverPath = '/Users/biglion/.config/yarn/global/node_modules/typescript/lib/tsserverlibrary.js',
+		suggest = {
+			includeCompletionsForModuleExports = true,
+		},
+	},
+	javascript = {
+		-- inlayHints = {
+		-- 	includeInlayParameterNameHints = "all",
+		-- 	includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+		-- 	includeInlayFunctionParameterTypeHints = true,
+		-- 	includeInlayVariableTypeHints = false,
+		-- 	includeInlayPropertyDeclarationTypeHints = true,
+		-- 	includeInlayFunctionLikeReturnTypeHints = false,
+		-- 	includeInlayEnumMemberValueHints = true,
+		-- },
+		suggest = {
+			includeCompletionsForModuleExports = true,
+		},
+	},
+}
+
+M.capabilities = capabilities
+M.on_attach = on_attach
+M.handlers = handlers
+M.settings = settings
+
+return M

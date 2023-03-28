@@ -58,7 +58,7 @@ require('telescope').setup {
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('ultisnips')
 require("telescope").load_extension("emoji")
-require("telescope").load_extension('repo')
+-- require("telescope").load_extension('repo')
 require("telescope").load_extension('flutter')
 
 -- Implement delta as previewer for diffs

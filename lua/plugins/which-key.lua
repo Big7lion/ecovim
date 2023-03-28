@@ -224,10 +224,8 @@ local mappings = {
     name = "Code Outline",
     t = { 'Open or close the aerial window' },
     o = { 'Toggle tree at current location' },
-    s = { 'Sync code folding with current tree state' }
   }
 }
-
 local wk = require "which-key"
 wk.register(mappings, normal_opts)
 wk.register(mappings, visual_opts)

@@ -1,20 +1,14 @@
 local M = {}
-
--- Auto-install
-
-local lsp_installer_servers = require'nvim-lsp-installer.servers'
-
-local ok, eslint = lsp_installer_servers.get_server("eslint")
-if ok then
-    if not eslint:is_installed() then
-        eslint:install()
-    end
-end
-
--- Settings
-
 M.settings = {
   format = { enable = false }
 }
 
+local on_attach = function(client, bufnr)
+  client.server_capabilities.documentFormattingProvider = true
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+end
+
+M.on_attach = on_attach;
 return M

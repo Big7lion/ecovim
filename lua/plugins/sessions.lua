@@ -22,14 +22,10 @@ session_manager.setup({
 })
 
 ------------ utils functions ----------------
-local tree = require('nvim-tree')
-local tree_view = require("nvim-tree.view")
+local tree_api = require('nvim-tree.api')
 
 function open_tree()
-  if tree_view.is_visible() then
-    tree_view.close()
-  end
-  tree.toggle(false, true)
+  tree_api.api.toggle({focus = false})
 end
 
 function on_session_load()
