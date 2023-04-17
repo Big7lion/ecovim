@@ -22,15 +22,11 @@ session_manager.setup({
 })
 
 ------------ utils functions ----------------
-local tree_api = require('nvim-tree.api')
-
-function open_tree()
-  tree_api.api.toggle({focus = false})
-end
 
 function on_session_load()
   require('notify')("session load success!", "info", { title = "Session Manager", timeout = 3000 })
   open_tree()
+  require('nvim-tree.api').api.toggle({focus = false})
 end
 
 ------------ regesiter events --------------

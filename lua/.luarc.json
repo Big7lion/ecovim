@@ -1,0 +1,8 @@
+{
+    "diagnostics.globals": [
+        "vim",
+        "bit",
+        "on_session_load",
+        "open_tree"
+    ]
+}

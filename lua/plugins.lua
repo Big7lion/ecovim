@@ -11,7 +11,7 @@ local function init()
       execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
       execute("packadd packer.nvim")
       print("Installed packer.nvim.")
-      is_installed = 1
+      is_installed = true
     end
   end
 

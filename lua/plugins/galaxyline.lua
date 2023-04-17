@@ -382,17 +382,17 @@ table.insert(gls.left, {
 -- }}}3
 
 -- GPS {{{3
-table.insert(gls.left, {
-    nvimGPS = {
-      provider = function()
-        return gps.get_location()
-      end,
-      condition = function()
-        return gps.is_available() and #gps.get_location() > 0
-      end,
-      highlight = {colors.gpstext, colors.bg}
-    }
-})
+-- table.insert(gls.left, {
+--     nvimGPS = {
+--       provider = function()
+--         return gps.get_location()
+--       end,
+--       condition = function()
+--         return gps.is_available() and #gps.get_location() > 0
+--       end,
+--       highlight = {colors.gpstext, colors.bg}
+--     }
+-- })
 -- }}}3
 
 -- }}}2
